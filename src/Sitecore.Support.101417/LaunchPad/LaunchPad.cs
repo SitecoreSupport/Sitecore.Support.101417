@@ -1,9 +1,10 @@
-﻿namespace Sitecore.Support.LaunchPad
+﻿using Sitecore.Speak.Applications.Dependencies;
+
+namespace Sitecore.Support.LaunchPad
 {
   using Sitecore.Configuration;
   using Sitecore.LaunchPad.Configuration;
   using Sitecore.Shell.Web;
-  using Sitecore.Xdb.Configuration;
   using System;
   using System.Collections.Generic;
   using System.Linq;
@@ -23,12 +24,14 @@
         FallBackMessage.Parameters["Text"] = text.Replace("{{version}}", About.GetVersionNumber(false));
       }
 
-      if (Text2 != null && !XdbSettings.Enabled)
+      Product product = AppDependencyManager.RegisteredProducts["xdb"];
+      bool flag = product != null && product.IsEnabled();
+      if (this.Text2 != null && !flag)
       {
-        Text2.DataSource = "{C2F629FF-BD7D-42B4-A247-3380DAE1408C}";
+        this.Text2.DataSource = "{C2F629FF-BD7D-42B4-A247-3380DAE1408C}";
       }
 
-      if (!LaunchPadSettings.EnablePersonalizedFrames || !XdbSettings.Enabled || chart1Layout == null || chart2Layout == null)
+      if (!LaunchPadSettings.EnablePersonalizedFrames || !flag || chart1Layout == null || chart2Layout == null)
       {
         RowPanelTilesWrapper.Parameters["IsVisible"] = "false";
         InteractionChartApp.Placeholder = string.Empty;
