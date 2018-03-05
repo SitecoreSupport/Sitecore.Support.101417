@@ -54,6 +54,10 @@
       <HintPath>..\packages\SC.Sitecore.Mvc.9.0.1\lib\Sitecore.Mvc.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Sitecore.Speak.Applications, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SC.Sitecore.Speak.Applications.9.0.1\lib\Sitecore.Speak.Applications.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Sitecore.Speak.Client">
       <HintPath>..\packages\SC.Sitecore.Speak.Client.9.0.1\lib\Sitecore.Speak.Client.dll</HintPath>
       <Private>False</Private>
