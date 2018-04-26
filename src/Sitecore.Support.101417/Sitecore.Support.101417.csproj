@@ -77,8 +77,6 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddWebEditRibbon.cs" />
-    <Compile Include="EnsureLoggedInForPreview.cs" />
     <Compile Include="LaunchPad\LaunchPad.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
