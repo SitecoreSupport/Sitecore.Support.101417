@@ -18,10 +18,13 @@ namespace Sitecore.Support.Mvc.Pipelines.Request.RequestBegin
     {
       if (!Context.PageMode.IsNormal && !Context.IsLoggedIn)
       {
-        SiteContext site = Factory.GetSite("shell");
-        using (new SiteContextSwitcher(site))
+        if (!Context.PageMode.IsPreview) // 101417-1.7.1.1 Allow preview to work
         {
-          HttpContext.Current.Response.Redirect("/sitecore/login", true); // 101417 SXA fix. Redirect without using ShellPage.IsLoggedIn() instead of original patch's not redirecting at all.
+          SiteContext site = Factory.GetSite("shell");
+          using (new SiteContextSwitcher(site))
+          {
+            HttpContext.Current.Response.Redirect(@"/sitecore/login", true); // 101417 SXA fix. Redirect without using ShellPage.IsLoggedIn() instead of original patch's not redirecting at all.
+          }
         }
       }
     }
